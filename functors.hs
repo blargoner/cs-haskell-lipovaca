@@ -31,5 +31,10 @@ split = Node
 		(Leaf (\s -> let n = length s `div` 2 in take n s))
 		(Leaf (\s -> let n = length s `div` 2 in drop n s))
 
-tree :: Tree String
-tree = (iterateA split (Leaf "abcdefgh")) !! 3
+splitTree :: Tree String
+splitTree = (iterateA split (Leaf "abcdefgh")) !! 3
+
+-- example
+-- lifting the addition operator to trees to add two trees together
+sumTree :: Tree Int
+sumTree = (+) <$> Node (Leaf 1) (Leaf 2) <*> Node (Leaf 3) (Leaf 4)
